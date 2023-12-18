@@ -56,6 +56,7 @@ cargo run # debug by default
 
 # 16.61 s
 
+# unsafe mode
 cargo run --release  
 # start key-gen-face-five
 # bootstrap -> keys=[0, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -103,4 +104,52 @@ cargo run --release
 
 # 1.56s
 
+
+# safe mode
+cargo run --release  
+# start key-gen-face-five
+# bootstrap -> keys=[0, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# searching for k=3
+# key[3]=22
+# c=52
+#         runtime for key[3] = 11.154µs
+#         runtime for key[3] = 13.005µs
+# searching for k=4
+# key[4]=94
+# c=121
+#         runtime for key[4] = 123.478µs
+#         runtime for key[4] = 141.723µs
+# searching for k=5
+# key[5]=312
+# c=246
+#         runtime for key[5] = 1.13136ms
+#         runtime for key[5] = 1.27991ms
+# searching for k=6
+# key[6]=992
+# c=455
+#         runtime for key[6] = 9.277923ms
+#         runtime for key[6] = 10.563149ms
+# searching for k=7
+# key[7]=2422
+# c=784
+#         runtime for key[7] = 31.166671ms
+#         runtime for key[7] = 41.734232ms
+# searching for k=8
+# key[8]=5624
+# c=1278
+#         runtime for key[8] = 149.229778ms
+#         runtime for key[8] = 190.96847ms
+# searching for k=9
+# key[9]=12522
+# c=1992
+#         runtime for key[9] = 718.673224ms
+#         runtime for key[9] = 909.645708ms
+# searching for k=10
+# key[10]=19998
+# c=2992
+#         runtime for key[10] = 1.294074792s
+#         runtime for key[10] = 2.203724495s
+# runtime = 2.20372748s
+
+# 2.20s
 ```

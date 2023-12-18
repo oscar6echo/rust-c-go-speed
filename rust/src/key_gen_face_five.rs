@@ -6,13 +6,10 @@ pub fn main() {
 
     // init
     let mut t: u32; // t=trial key, k=index searched key
-    let mut i: usize; // loop counters
-    let mut j: usize; // loop counters
     let mut c: usize; // sums counter
     let mut valid: bool; // true if key is valid
 
     let mut sums = [0; 50000]; // array of all possible sums of key[c[1-5]]
-
     let mut key = [0, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // init keys - empirical
 
     println!("bootstrap -> keys={:?}", key);
@@ -68,26 +65,37 @@ pub fn main() {
             //     }
             // }
 
+            // v1 - debug mode
+            // let mut i: usize;
+            // let mut j: usize;
+            // valid = true;
+            // i = 0;
+            // loop {
+            //     j = i + 1;
+            //     loop {
+            //         if sums[i] == sums[j] {
+            //             valid = false;
+            //         }
+            //         j += 1;
+
+            //         if !(valid && j < c) {
+            //             break;
+            //         }
+            //     }
+            //     i += 1;
+            //     if !(valid && i < c - 1) {
+            //         break;
+            //     }
+            // }
+
+            // v2 -  release mode with unsafe - fastest
+            let mut i: usize;
+            let mut j: usize;
             i = 0;
             valid = true;
-
             loop {
                 j = i + 1;
                 loop {
-                    // 1 - test used in debug mode
-                    // if sums[i] == sums[j] {
-
-                    // 2 - candidate test for release mode - not efficient
-                    // assert!(i < sums.len());
-                    // assert!(j < sums.len());
-                    // if sums[i] == sums[j] {
-
-                    // 2bis - candidate test for release mode - not efficient
-                    // let bounded_i = cmp::min(i, sums.len());
-                    // let bounded_j = cmp::min(j, sums.len());
-                    // if sums[bounded_i] == sums[bounded_j] {
-
-                    // 3 - test used in release mode - very efficient
                     if unsafe { sums.get_unchecked(i) == sums.get_unchecked(j) } {
                         valid = false;
                     }
@@ -103,17 +111,40 @@ pub fn main() {
                 }
             }
 
-            // while valid && i < c - 1 {
-            //     j = i + 1;
-            //     while valid && j < c {
-            //         if sums[i] == sums[j] {
-            //             valid = false;
-            //         }
-            //         j += 1;
+            // v3 - release mode without unsafe - fastest safe
+            // let mut i;
+            // i = 0;
+            // valid = true;
+            // loop {
+            //     if sums[i + 1..c].contains(&sums[i]) {
+            //         valid = false;
             //     }
             //     i += 1;
+            //     if !(valid && i < c - 1) {
+            //         break;
+            //     }
             // }
 
+            // v4 - release mode without unsafe - less efficient ways
+            // let mut i: usize;
+            // i = 0;
+            // valid = true;
+            // loop {
+            //     let sums_i = sums[i];
+            //     for &sums_j in &sums[i + 1..c] {
+            //         if sums_i == sums_j {
+            //             valid = false;
+            //             break;
+            //         }
+            //     }
+            //     i += 1;
+            //     if !(valid && i < c - 1) {
+            //         break;
+            //     }
+            // }
+
+            // v5 - release mode without unsafe - less efficient ways
+            // valid = true;
             // for (i, s) in sums[..c - 1].iter().enumerate() {
             //     if sums[i + 1..c].contains(s) {
             //         valid = false;
