@@ -17,8 +17,8 @@ data = [
     # gofrom py_markdown_table.markdown_table import markdown_table
     ["go", "", 2.34],
     # rust
-    ["rust", "--debug", 16.62],
-    ["rust", "--release", 5.61],
+    ["rust", "--debug", 16.11],
+    ["rust", "--release", 5.62],
 ]
 
 

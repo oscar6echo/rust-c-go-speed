@@ -26,14 +26,14 @@ pub fn main() {
 
         while !valid {
             key[k] = t;
-            // let c_max = k + 1;
+            let c_max = k + 1;
             c = 0;
 
-            for c1 in 0..k {
-                for c2 in c1..=k {
-                    for c3 in c2..=k {
-                        for c4 in c3..=k {
-                            for c5 in c4..=k {
+            for c1 in 0..c_max {
+                for c2 in c1..c_max {
+                    for c3 in c2..c_max {
+                        for c4 in c3..c_max {
+                            for c5 in c4..c_max {
                                 if c1 != c5 {
                                     sums[c] = key[c1] + key[c2] + key[c3] + key[c4] + key[c5];
                                     c += 1;
