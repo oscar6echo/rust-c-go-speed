@@ -12,6 +12,8 @@ pub fn main() {
     let mut sums = [0; 50000]; // array of all possible sums of key[c[1-5]]
     let mut key = [0, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // init keys - empirical
 
+    // let sums_max_idx = sums.len();
+
     println!("bootstrap -> keys={:?}", key);
 
     let start = Instant::now();
@@ -33,6 +35,8 @@ pub fn main() {
                         for c4 in c3..c_max {
                             for c5 in c4..c_max {
                                 if c1 != c5 {
+                                    // let bounded_c = cmp::min(c, sums_max_idx);
+                                    // let bounded_c = cmp::min(c, sums.len() - 1);
                                     let bounded_c = cmp::min(c, sums.len());
                                     sums[bounded_c] =
                                         key[c1] + key[c2] + key[c3] + key[c4] + key[c5];
