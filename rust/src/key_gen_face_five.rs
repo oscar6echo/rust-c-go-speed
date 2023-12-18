@@ -131,7 +131,6 @@ pub fn main() {
                 t += 1;
             }
         }
-        // k += 1;
     }
 
     let end = Instant::now();
