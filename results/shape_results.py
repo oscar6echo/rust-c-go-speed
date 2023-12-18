@@ -41,7 +41,7 @@ path = "runtime.csv"
 df.write_csv(path)
 print(f"saved {path}")
 
-markdown = markdown_table(df.to_dicts()).get_markdown()
+markdown = markdown_table(df.to_dicts()).set_params(row_sep="markdown").get_markdown()
 path = Path("runtime.md")
-path.write_text(markdown)
+path.write_text(markdown[3:-3])
 print(f"saved {path}")
