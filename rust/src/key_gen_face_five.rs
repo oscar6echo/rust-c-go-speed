@@ -37,7 +37,7 @@ pub fn main() {
                                 if c1 != c5 {
                                     // let bounded_c = cmp::min(c, sums_max_idx);
                                     // let bounded_c = cmp::min(c, sums.len() - 1);
-                                    let bounded_c = cmp::min(c, sums.len());
+                                    let bounded_c = cmp::min(c, sums.len() - 1);
                                     sums[bounded_c] =
                                         key[c1] + key[c2] + key[c3] + key[c4] + key[c5];
                                     c += 1;
@@ -158,7 +158,7 @@ pub fn main() {
 
             if valid {
                 println!("key[{}]={:?}", k, t);
-                println!("c={:?}", c);
+                // println!("c={:?}", c); // ?!?? comment to allow bounded_c = len()-1 without perf impact
                 let end = Instant::now();
                 println!("\truntime for key[{}] = {:?}", k, (end - interm));
                 println!("\truntime for key[{}] = {:?}", k, (end - start));
