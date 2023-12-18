@@ -1,17 +1,17 @@
-# Rust C Go runtime speed comparison
+# Rust vs. C vs. Go runtime speed comparison
 
-## Use case
+## Program
 
 Simple numerical program with integers, fixed sized arrays, nested loops.  
 (Note: It computes some first keys for a Poker hand evaluator)  
 
 Implemented in:
 
-+ Rust
++ [Rust](./rust/src/key_gen_face_five.rs)
 + [C](./c/key-gen-face-five.c)
-+ Go
++ [Go](./go/key-gen-face-five.go)
 
-## Machine
+## System
 
 ```sh
 # hardware overview
