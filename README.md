@@ -35,16 +35,16 @@ Implemented in:
 │ str      ┆ str       ┆ f64     ┆ f64            │
 ╞══════════╪═══════════╪═════════╪════════════════╡
 │ gcc      ┆ -O3       ┆ 1.54    ┆ 1.0            │
+│ rust     ┆ --release ┆ 1.56    ┆ 1.01           │
 │ clang    ┆ -O3       ┆ 2.27    ┆ 1.47           │
 │ clang    ┆ -O1       ┆ 2.3     ┆ 1.49           │
 │ go       ┆           ┆ 2.34    ┆ 1.52           │
 │ gcc      ┆ -O2       ┆ 2.9     ┆ 1.88           │
 │ gcc      ┆ -O1       ┆ 2.95    ┆ 1.92           │
 │ clang    ┆ -O2       ┆ 4.35    ┆ 2.82           │
-│ rust     ┆ --release ┆ 5.62    ┆ 3.65           │
 │ gcc      ┆           ┆ 10.1    ┆ 6.56           │
 │ clang    ┆           ┆ 11.53   ┆ 7.49           │
-│ rust     ┆ --debug   ┆ 16.11   ┆ 10.46          │
+│ rust     ┆ --debug   ┆ 16.61   ┆ 10.79          │
 └──────────┴───────────┴─────────┴────────────────┘
 
 ```
@@ -52,3 +52,5 @@ Implemented in:
 ## Question
 
 Cf. forum question <https://users.rust-lang.org/t/rust-vs-c-vs-go-runtime-speed-comparison/104107>
+
+Conversation with the community brought the rust runtime from x10 to 1x the best C runtime ! - in 6 hours !! I'm seriously impressed :clap:

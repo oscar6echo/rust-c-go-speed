@@ -1,3 +1,4 @@
+use std::cmp;
 use std::time::Instant;
 
 pub fn main() {
@@ -35,7 +36,9 @@ pub fn main() {
                         for c4 in c3..c_max {
                             for c5 in c4..c_max {
                                 if c1 != c5 {
-                                    sums[c] = key[c1] + key[c2] + key[c3] + key[c4] + key[c5];
+                                    let bounded_c = cmp::min(c, sums.len());
+                                    sums[bounded_c] =
+                                        key[c1] + key[c2] + key[c3] + key[c4] + key[c5];
                                     c += 1;
                                 }
                             }
@@ -44,14 +47,14 @@ pub fn main() {
                 }
             }
 
-            // unsafe {
-            //     for c1 in 0..k {
-            //         for c2 in c1..=k {
-            //             for c3 in c2..=k {
-            //                 for c4 in c3..=k {
-            //                     for c5 in c4..=k {
-            //                         if c1 != c5 {
-            //                             sums[c] = key.get_unchecked(c1)
+            // for c1 in 0..c_max {
+            //     for c2 in c1..c_max {
+            //         for c3 in c2..c_max {
+            //             for c4 in c3..c_max {
+            //                 for c5 in c4..c_max {
+            //                     if c1 != c5 {
+            //                         unsafe {
+            //                             sums[cmp::min(c, sums.len())] = key.get_unchecked(c1)
             //                                 + key.get_unchecked(c2)
             //                                 + key.get_unchecked(c3)
             //                                 + key.get_unchecked(c4)
@@ -68,31 +71,47 @@ pub fn main() {
             i = 0;
             valid = true;
 
-            while valid && i < c - 1 {
+            loop {
                 j = i + 1;
-                while valid && j < c {
-                    if sums[i] == sums[j] {
+                loop {
+                    // 1 - test used in debug mode
+                    // if sums[i] == sums[j] {
+
+                    // 2 - candidate test for release mode - not efficient
+                    // let bounded_i = cmp::min(i, sums.len());
+                    // let bounded_j = cmp::min(j, sums.len());
+                    // if sums[bounded_i] == sums[bounded_j] {
+
+                    // 3 - test used in release mode
+                    if unsafe { sums.get_unchecked(i) == sums.get_unchecked(j) } {
                         valid = false;
                     }
                     j += 1;
+
+                    if !(valid && j < c) {
+                        break;
+                    }
                 }
                 i += 1;
+                if !(valid && i < c - 1) {
+                    break;
+                }
             }
 
-            // loop {
+            // while valid && i < c - 1 {
             //     j = i + 1;
-            //     loop {
+            //     while valid && j < c {
             //         if sums[i] == sums[j] {
             //             valid = false;
             //         }
             //         j += 1;
-
-            //         if !(valid && j < c) {
-            //             break;
-            //         }
             //     }
             //     i += 1;
-            //     if !(valid && i < c - 1) {
+            // }
+
+            // for (i, s) in sums[..c - 1].iter().enumerate() {
+            //     if sums[i + 1..c].contains(s) {
+            //         valid = false;
             //         break;
             //     }
             // }
