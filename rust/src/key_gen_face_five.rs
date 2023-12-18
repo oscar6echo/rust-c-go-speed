@@ -78,11 +78,16 @@ pub fn main() {
                     // if sums[i] == sums[j] {
 
                     // 2 - candidate test for release mode - not efficient
+                    // assert!(i < sums.len());
+                    // assert!(j < sums.len());
+                    // if sums[i] == sums[j] {
+
+                    // 2bis - candidate test for release mode - not efficient
                     // let bounded_i = cmp::min(i, sums.len());
                     // let bounded_j = cmp::min(j, sums.len());
                     // if sums[bounded_i] == sums[bounded_j] {
 
-                    // 3 - test used in release mode
+                    // 3 - test used in release mode - very efficient
                     if unsafe { sums.get_unchecked(i) == sums.get_unchecked(j) } {
                         valid = false;
                     }
