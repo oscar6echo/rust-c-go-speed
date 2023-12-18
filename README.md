@@ -41,18 +41,14 @@ Implemented in:
 │ gcc      ┆ -O2       ┆ 2.9     ┆ 1.88           │
 │ gcc      ┆ -O1       ┆ 2.95    ┆ 1.92           │
 │ clang    ┆ -O2       ┆ 4.35    ┆ 2.82           │
+│ rust     ┆ --release ┆ 5.61    ┆ 3.64           │
 │ gcc      ┆           ┆ 10.1    ┆ 6.56           │
 │ clang    ┆           ┆ 11.53   ┆ 7.49           │
-│ rust     ┆           ┆ 16.62   ┆ 10.79          │
+│ rust     ┆ --debug   ┆ 16.62   ┆ 10.79          │
 └──────────┴───────────┴─────────┴────────────────┘
 
 ```
 
 ## Question
 
-The runtime is very sensitive to compiler and compilation flags as demonstrated by the variations within the best compiler (gcc) results.
-
-But I am puzzled by the very poor performance of the rust compiler on this very straightforward program.
-
-Some expert advice is needed to try and improve it.  
-Hopefully perf can be brought to par with go, if not gcc best perf.
+Cf. forum question <https://users.rust-lang.org/t/rust-vs-c-vs-go-runtime-speed-comparison/104107>

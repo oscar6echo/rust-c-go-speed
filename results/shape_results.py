@@ -1,4 +1,7 @@
+from pathlib import Path
+
 import polars as pl
+from py_markdown_table.markdown_table import markdown_table
 
 data = [
     # gcc
@@ -11,10 +14,11 @@ data = [
     ["clang", "-O2", 4.35],
     ["clang", "-O1", 2.30],
     ["clang", "", 11.53],
-    # go
+    # gofrom py_markdown_table.markdown_table import markdown_table
     ["go", "", 2.34],
     # rust
-    ["rust", "", 16.62],
+    ["rust", "--debug", 16.62],
+    ["rust", "--release", 5.61],
 ]
 
 
@@ -32,4 +36,12 @@ df = df.with_columns(
 pl.Config.set_tbl_rows(df.shape[0] + 1)
 
 print(df)
-df.write_csv("runtime.csv")
+
+path = "runtime.csv"
+df.write_csv(path)
+print(f"saved {path}")
+
+markdown = markdown_table(df.to_dicts()).get_markdown()
+path = Path("runtime.md")
+path.write_text(markdown)
+print(f"saved {path}")
