@@ -170,4 +170,5 @@ pub fn main() {
 
     let end = Instant::now();
     println!("runtime = {:?}", (end - start));
+    println!("key={:?}", key);
 }
