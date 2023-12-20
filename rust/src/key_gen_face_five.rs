@@ -129,6 +129,9 @@ pub fn main() {
             //     }
             // }
 
+            // v3b - release mode without unsafe - fatest safe equivalent more compact
+            // valid = (0..c - 1).all(|i| !sums[i + 1..c].contains(&sums[i]));
+
             // v4 - release mode without unsafe - less efficient ways
             // let mut i: usize;
             // i = 0;

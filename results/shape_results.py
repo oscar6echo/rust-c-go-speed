@@ -20,6 +20,7 @@ data = [
     ["rust", "debug v1", 16.61],
     ["rust", "release v2 unsafe", 1.56],
     ["rust", "release v3 safe", 2.20],
+    ["rust", "release v3b safe", 2.22],
     ["rust", "release v4 safe", 2.62],
     ["rust", "release v5 safe", 2.89],
 ]

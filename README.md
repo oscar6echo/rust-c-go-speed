@@ -37,6 +37,7 @@ Implemented in:
 │ gcc      ┆ -O3               ┆ 1.54    ┆ 1.0            │
 │ rust     ┆ release v2 unsafe ┆ 1.56    ┆ 1.01           │
 │ rust     ┆ release v3 safe   ┆ 2.2     ┆ 1.43           │
+│ rust     ┆ release v3b safe  ┆ 2.22    ┆ 1.44           │
 │ clang    ┆ -O3               ┆ 2.27    ┆ 1.47           │
 │ clang    ┆ -O1               ┆ 2.3     ┆ 1.49           │
 │ go       ┆                   ┆ 2.34    ┆ 1.52           │
