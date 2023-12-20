@@ -1,4 +1,5 @@
-compiler,opt_level,runtime,ratio vs. best
+compiler,opt_level,runtime,ratio vs. best not parallel
+rust,release parallel unsafe,0.41,0.27
 gcc,-O3,1.54,1.0
 rust,release v2 unsafe,1.56,1.01
 rust,release v3 safe,2.2,1.43

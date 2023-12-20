@@ -1,17 +1,18 @@
-|compiler|    opt_level    |runtime|ratio vs. best|
-|--------|-----------------|-------|--------------|
-|   gcc  |       -O3       |  1.54 |      1.0     |
-|  rust  |release v2 unsafe|  1.56 |     1.01     |
-|  rust  | release v3 safe |  2.2  |     1.43     |
-|  rust  | release v3b safe|  2.22 |     1.44     |
-|  clang |       -O3       |  2.27 |     1.47     |
-|  clang |       -O1       |  2.3  |     1.49     |
-|   go   |                 |  2.34 |     1.52     |
-|  rust  | release v4 safe |  2.62 |      1.7     |
-|   gcc  |       -O2       |  2.9  |     1.88     |
-|  rust  | release v5 safe |  2.89 |     1.88     |
-|   gcc  |       -O1       |  2.95 |     1.92     |
-|  clang |       -O2       |  4.35 |     2.82     |
-|   gcc  |                 |  10.1 |     6.56     |
-|  clang |                 | 11.53 |     7.49     |
-|  rust  |     debug v1    | 16.61 |     10.79    |
+|compiler|       opt_level       |runtime|ratio vs. best not parallel|
+|--------|-----------------------|-------|---------------------------|
+|  rust  |release parallel unsafe|  0.41 |            0.27           |
+|   gcc  |          -O3          |  1.54 |            1.0            |
+|  rust  |   release v2 unsafe   |  1.56 |            1.01           |
+|  rust  |    release v3 safe    |  2.2  |            1.43           |
+|  rust  |    release v3b safe   |  2.22 |            1.44           |
+|  clang |          -O3          |  2.27 |            1.47           |
+|  clang |          -O1          |  2.3  |            1.49           |
+|   go   |                       |  2.34 |            1.52           |
+|  rust  |    release v4 safe    |  2.62 |            1.7            |
+|   gcc  |          -O2          |  2.9  |            1.88           |
+|  rust  |    release v5 safe    |  2.89 |            1.88           |
+|   gcc  |          -O1          |  2.95 |            1.92           |
+|  clang |          -O2          |  4.35 |            2.82           |
+|   gcc  |                       |  10.1 |            6.56           |
+|  clang |                       | 11.53 |            7.49           |
+|  rust  |        debug v1       | 16.61 |           10.79           |

@@ -23,6 +23,8 @@ data = [
     ["rust", "release v3b safe", 2.22],
     ["rust", "release v4 safe", 2.62],
     ["rust", "release v5 safe", 2.89],
+    # rust parallel
+    ["rust", "release parallel unsafe", 0.41],
 ]
 
 
@@ -30,12 +32,19 @@ df = pl.DataFrame(
     data=data,
     schema=["compiler", "opt_level", "runtime"],
 )
-best = df.select("runtime").min().item()
+best = (
+    df.filter(~pl.col("opt_level").str.contains("parallel"))
+    .select("runtime")
+    .min()
+    .item()
+)
 print(best)
 
+col_ratio = "ratio vs. best not parallel"
+
 df = df.with_columns(
-    (df["runtime"] / best).round(2).alias("ratio vs. best"),
-).sort("ratio vs. best")
+    (df["runtime"] / best).round(2).alias(col_ratio),
+).sort(col_ratio)
 
 pl.Config.set_tbl_rows(df.shape[0] + 1)
 
