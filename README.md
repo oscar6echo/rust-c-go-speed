@@ -29,28 +29,29 @@ Implemented in:
 ## Results
 
 ```sh
-┌──────────┬─────────────────────────┬─────────┬─────────────────────────────┐
-│ compiler ┆ opt_level               ┆ runtime ┆ ratio vs. best not parallel │
-│ ---      ┆ ---                     ┆ ---     ┆ ---                         │
-│ str      ┆ str                     ┆ f64     ┆ f64                         │
-╞══════════╪═════════════════════════╪═════════╪═════════════════════════════╡
-│ rust     ┆ release parallel unsafe ┆ 0.41    ┆ 0.27                        │
-│ gcc      ┆ -O3                     ┆ 1.54    ┆ 1.0                         │
-│ rust     ┆ release v2 unsafe       ┆ 1.56    ┆ 1.01                        │
-│ rust     ┆ release v3 safe         ┆ 2.2     ┆ 1.43                        │
-│ rust     ┆ release v3b safe        ┆ 2.22    ┆ 1.44                        │
-│ clang    ┆ -O3                     ┆ 2.27    ┆ 1.47                        │
-│ clang    ┆ -O1                     ┆ 2.3     ┆ 1.49                        │
-│ go       ┆                         ┆ 2.34    ┆ 1.52                        │
-│ rust     ┆ release v4 safe         ┆ 2.62    ┆ 1.7                         │
-│ gcc      ┆ -O2                     ┆ 2.9     ┆ 1.88                        │
-│ rust     ┆ release v5 safe         ┆ 2.89    ┆ 1.88                        │
-│ gcc      ┆ -O1                     ┆ 2.95    ┆ 1.92                        │
-│ clang    ┆ -O2                     ┆ 4.35    ┆ 2.82                        │
-│ gcc      ┆                         ┆ 10.1    ┆ 6.56                        │
-│ clang    ┆                         ┆ 11.53   ┆ 7.49                        │
-│ rust     ┆ debug v1                ┆ 16.61   ┆ 10.79                       │
-└──────────┴─────────────────────────┴─────────┴─────────────────────────────┘
+┌───────────┬──────────┬─────────────────────────┬─────────┬───────────────────────────────┐
+│ algo      ┆ compiler ┆ opt_level               ┆ runtime ┆ best vs. naive & not parallel │
+│ ---       ┆ ---      ┆ ---                     ┆ ---     ┆ ---                           │
+│ str       ┆ str      ┆ str                     ┆ f64     ┆ f64                           │
+╞═══════════╪══════════╪═════════════════════════╪═════════╪═══════════════════════════════╡
+│ optimized ┆ rust     ┆ release safe            ┆ 0.19    ┆ 0.12                          │
+│ naive     ┆ rust     ┆ release parallel unsafe ┆ 0.41    ┆ 0.27                          │
+│ naive     ┆ gcc      ┆ -O3                     ┆ 1.54    ┆ 1.0                           │
+│ naive     ┆ rust     ┆ release v2 unsafe       ┆ 1.56    ┆ 1.01                          │
+│ naive     ┆ rust     ┆ release v3 safe         ┆ 2.2     ┆ 1.43                          │
+│ naive     ┆ rust     ┆ release v3b safe        ┆ 2.22    ┆ 1.44                          │
+│ naive     ┆ clang    ┆ -O3                     ┆ 2.27    ┆ 1.47                          │
+│ naive     ┆ clang    ┆ -O1                     ┆ 2.3     ┆ 1.49                          │
+│ naive     ┆ go       ┆                         ┆ 2.34    ┆ 1.52                          │
+│ naive     ┆ rust     ┆ release v4 safe         ┆ 2.62    ┆ 1.7                           │
+│ naive     ┆ gcc      ┆ -O2                     ┆ 2.9     ┆ 1.88                          │
+│ naive     ┆ rust     ┆ release v5 safe         ┆ 2.89    ┆ 1.88                          │
+│ naive     ┆ gcc      ┆ -O1                     ┆ 2.95    ┆ 1.92                          │
+│ naive     ┆ clang    ┆ -O2                     ┆ 4.35    ┆ 2.82                          │
+│ naive     ┆ gcc      ┆                         ┆ 10.1    ┆ 6.56                          │
+│ naive     ┆ clang    ┆                         ┆ 11.53   ┆ 7.49                          │
+│ naive     ┆ rust     ┆ debug v1                ┆ 16.61   ┆ 10.79                         │
+└───────────┴──────────┴─────────────────────────┴─────────┴───────────────────────────────┘
 ```
 
 Not in competition but interesting:  
@@ -60,4 +61,8 @@ This program can be made parallel in steps: Several searches can be run in paral
 
 Cf. forum question <https://users.rust-lang.org/t/rust-vs-c-vs-go-runtime-speed-comparison/104107>
 
-Conversation with the community brought the rust runtime from x10 to 1x the best C runtime ! - in 6 hours !! I'm seriously impressed :clap:
+Conversation with the community brought the rust runtime from x10 to 1x the best C runtime ! - in 6 hours.  
+Then the next day to x0.12 !  Total a x90 speedup and several clever recipes in rust `_v2` algos.  
+I'm seriously impressed :clap:  
+
+Special mention to [steffhan](https://users.rust-lang.org/u/steffahn/summary) for the optimized algo.
