@@ -77,7 +77,7 @@ Implemented in:
 Cf. forum question <https://users.rust-lang.org/t/rust-vs-c-vs-go-runtime-speed-comparison/104107>
 
 Conversation with the community brought the rust runtime from x10 to 1x the best C runtime ! - in 6 hours.  
-Then the next day to x0.12 !  Total a x90 speedup and several clever recipes in rust `_v2` algos.  
+Then the next day to x0.12 ! And the next: a parallel version ! Total: a x200 speedup and several clever recipes in rust `_v2_` algos.  
 I'm seriously impressed :clap:  
 
 Special mention to [steffhan](https://users.rust-lang.org/u/steffahn/summary) for the optimized algo and efficient parallel version.
