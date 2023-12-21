@@ -23,7 +23,7 @@ pub fn main() {
 
     let start = Instant::now();
     t = 5;
-    for k in 3..11 {
+    for k in 3..13 {
         println!("searching for k={}", k);
         // sanity check, `t` is always just increasing;
         // An always unique / fresh `t` value is important for correct representation of the

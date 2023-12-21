@@ -25,7 +25,9 @@ data = [
     ["naive", "rust", "release v5 safe", 2.89],
     ["optimized", "rust", "release safe", 0.19],
     # rust parallel
-    ["naive", "rust", "release parallel unsafe", 0.41],
+    ["naive", "rust", "release parallel unsafe", 0.32],
+    ["optimized", "rust", "release parallel safe a", 0.17],
+    ["optimized", "rust", "release parallel safe b", 0.07],
 ]
 
 
@@ -61,3 +63,21 @@ markdown = markdown_table(df.to_dicts()).set_params(row_sep="markdown").get_mark
 path = Path("runtime.md")
 path.write_text(markdown[3:-3])
 print(f"saved {path}")
+
+
+data = [
+    # rust parallel
+    ["naive", "rust", "safe 5-card", 0.26],
+    ["optimized", "rust", "safe 5-card parallel  a", 0.08],
+    ["optimized", "rust", "safe 5-card parallel  b", 0.05],
+    ["optimized", "rust", "safe 7-card parallel  a", 10.6],
+    ["optimized", "rust", "safe 7-card parallel  b", 7.3],
+]
+
+
+df = pl.DataFrame(
+    data=data,
+    schema=["algo", "compiler", "desc", "runtime"],
+)
+
+print(df)

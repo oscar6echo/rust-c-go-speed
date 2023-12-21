@@ -34,8 +34,10 @@ Implemented in:
 │ ---       ┆ ---      ┆ ---                     ┆ ---     ┆ ---                           │
 │ str       ┆ str      ┆ str                     ┆ f64     ┆ f64                           │
 ╞═══════════╪══════════╪═════════════════════════╪═════════╪═══════════════════════════════╡
+│ optimized ┆ rust     ┆ release parallel safe b ┆ 0.08    ┆ 0.05                          │
+│ optimized ┆ rust     ┆ release parallel safe a ┆ 0.1     ┆ 0.06                          │
 │ optimized ┆ rust     ┆ release safe            ┆ 0.19    ┆ 0.12                          │
-│ naive     ┆ rust     ┆ release parallel unsafe ┆ 0.41    ┆ 0.27                          │
+│ naive     ┆ rust     ┆ release parallel unsafe ┆ 0.48    ┆ 0.31                          │
 │ naive     ┆ gcc      ┆ -O3                     ┆ 1.54    ┆ 1.0                           │
 │ naive     ┆ rust     ┆ release v2 unsafe       ┆ 1.56    ┆ 1.01                          │
 │ naive     ┆ rust     ┆ release v3 safe         ┆ 2.2     ┆ 1.43                          │
@@ -54,8 +56,21 @@ Implemented in:
 └───────────┴──────────┴─────────────────────────┴─────────┴───────────────────────────────┘
 ```
 
-Not in competition but interesting:  
-This program can be made parallel in steps: Several searches can be run in parallel on distinct ranges, then the main thread collects the candidates keys and keep the smallest, if any. The the next step takes place.
+2 parallel versions - see scripts.
+
+```sh
+┌───────────┬──────────┬─────────────────────────┬─────────┐
+│ algo      ┆ compiler ┆ desc                    ┆ runtime │
+│ ---       ┆ ---      ┆ ---                     ┆ ---     │
+│ str       ┆ str      ┆ str                     ┆ f64     │
+╞═══════════╪══════════╪═════════════════════════╪═════════╡
+│ naive     ┆ rust     ┆ safe 5-card             ┆ 0.26    │
+│ optimized ┆ rust     ┆ safe 5-card parallel  a ┆ 0.08    │
+│ optimized ┆ rust     ┆ safe 5-card parallel  b ┆ 0.05    │
+│ optimized ┆ rust     ┆ safe 7-card parallel  a ┆ 10.6    │
+│ optimized ┆ rust     ┆ safe 7-card parallel  b ┆ 7.3     │
+└───────────┴──────────┴─────────────────────────┴─────────┘
+```
 
 ## Question
 
@@ -65,4 +80,4 @@ Conversation with the community brought the rust runtime from x10 to 1x the best
 Then the next day to x0.12 !  Total a x90 speedup and several clever recipes in rust `_v2` algos.  
 I'm seriously impressed :clap:  
 
-Special mention to [steffhan](https://users.rust-lang.org/u/steffahn/summary) for the optimized algo.
+Special mention to [steffhan](https://users.rust-lang.org/u/steffahn/summary) for the optimized algo and efficient parallel version.

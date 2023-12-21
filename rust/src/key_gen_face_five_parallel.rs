@@ -125,8 +125,7 @@ pub fn main() {
     // println!("search_range={}", search_range);
 
     let mut k = k_start;
-    // while k < 13 {
-    while k < 11 {
+    while k < 13 {
         let mut handles = vec![];
         for i in 0..N_THREAD {
             let handle = thread::spawn(move || {

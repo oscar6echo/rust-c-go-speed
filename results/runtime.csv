@@ -1,6 +1,8 @@
 algo,compiler,opt_level,runtime,best vs. naive & not parallel
+optimized,rust,release parallel safe b,0.07,0.05
+optimized,rust,release parallel safe a,0.17,0.11
 optimized,rust,release safe,0.19,0.12
-naive,rust,release parallel unsafe,0.41,0.27
+naive,rust,release parallel unsafe,0.32,0.21
 naive,gcc,-O3,1.54,1.0
 naive,rust,release v2 unsafe,1.56,1.01
 naive,rust,release v3 safe,2.2,1.43
