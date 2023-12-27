@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 
 [profile.release]
+strip = true
+# opt-level = "z" # Optimize for size
+opt-level = 3 # Optimize for speed
