@@ -64,14 +64,14 @@ fn search_keys(key_in: [u32; 13], k: usize, t_start: u32, t_end: u32, _i_thread:
 
         if valid {
             let _end = Instant::now();
-            // println!("key[{}]={:?}", k, t);
-            // println!(
-            //     "end search_keys in thread {}: found key[{}]={} in {:?}",
-            //     _i_thread,
-            //     k,
-            //     key[k],
-            //     _end - _start
-            // );
+            println!("key[{}]={:?}", k, t);
+            println!(
+                "end search_keys in thread {}: found key[{}]={} in {:?}",
+                _i_thread,
+                k,
+                key[k],
+                _end - _start
+            );
             return key[k];
         } else {
             t += 1;
@@ -124,8 +124,12 @@ pub fn main() {
     let mut k = k_start;
     while k < 13 {
         let mut handles = vec![];
-        // let n_thread: u32 = if k < 8 { 1 } else { n_thread_machine as u32 };
-        let n_thread = n_thread_machine;
+        let n_thread: u32 = if k < 9 {
+            1
+        } else {
+            (n_thread_machine * 0 + 5) as u32
+        };
+
         for i in 0..n_thread {
             let handle = thread::spawn(move || {
                 let i_thread = i as u32;
@@ -155,7 +159,7 @@ pub fn main() {
             let dt_total = end - start;
             let dt_interm = end - interm;
             println!(
-                "found key[{}]={}, runtime total={:?} last key={:?}",
+                "key found key[{}]={}, runtime total={:?} last ley={:?}",
                 k, key[k], dt_total, dt_interm
             );
             interm = Instant::now();

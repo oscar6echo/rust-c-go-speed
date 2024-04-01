@@ -41,7 +41,7 @@ pub fn main() {
                 // let mut set: Vec<u32> = sets.lock().unwrap().pop().unwrap_or_default();
 
                 let mut task = move || {
-                    'outer: for (i, t) in (t_init + offset..).step_by(n as usize).enumerate() {
+                    'outer: for (_i, t) in (t_init + offset..).step_by(n as usize).enumerate() {
                         // if i % 128 == 0 {
                         if let Some(t2) = *found_ref.lock().unwrap() {
                             if t2 < t {

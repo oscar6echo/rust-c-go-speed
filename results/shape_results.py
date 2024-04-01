@@ -14,7 +14,7 @@ data = [
     ["naive", "clang", "-O2", 4.35],
     ["naive", "clang", "-O1", 2.30],
     ["naive", "clang", "", 11.53],
-    # gofrom py_markdown_table.markdown_table import markdown_table
+    # go
     ["naive", "go", "", 2.34],
     # rust
     ["naive", "rust", "debug v1", 16.61],
